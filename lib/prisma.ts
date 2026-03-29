@@ -3,16 +3,13 @@ import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 import { PrismaClient } from "../generated/prisma/client.js";
 
 const adapter = new PrismaMariaDb({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME,
-  connectionLimit: 5,
+  host: process.env.DATABASE_HOST || "localhost",
+  user: process.env.DATABASE_USER || "root",
+  password: process.env.DATABASE_PASSWORD || "1234",
+  database: process.env.DATABASE_NAME || "node-prisma",
+  connectionLimit: 20,
 });
 
-/* const connectionString = `${process.env.DATABASE_URL}`
-const adapter = new PrismaMariaDb({ connectionString })
-
- */const prisma = new PrismaClient({ adapter });
+const prisma = new PrismaClient({ adapter });
 
 export { prisma };
