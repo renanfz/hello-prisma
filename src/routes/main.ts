@@ -5,7 +5,6 @@ import { error } from 'node:console';
 import { prisma } from '../../lib/prisma.js';
 import { sql } from '../../generated/prisma/internal/prismaNamespace.js';
 import { Sql } from '@prisma/client/runtime/client';
-
 export const mainRouter = Router();
 
 mainRouter.get('/ping', (req, res) => {
@@ -13,12 +12,12 @@ mainRouter.get('/ping', (req, res) => {
 });
 
 mainRouter.post('/user', async (req, res) => {
-    const dados = (['Sarah', 'sarah@gamil.com', 'mg'])
+    const dados = (['Severini', 'vanderlei@gmamil.com', 'mg'])
 
     const user = await createUser({ 
         name: dados[0]!,
         email: dados[1]!,
-        uf: dados[2]!
+        uf: dados[2]!,
     })
     if (user) {
         res.status(201).json({user})
